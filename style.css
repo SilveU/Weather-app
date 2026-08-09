@@ -28,16 +28,65 @@ html {
   font-size: 80px;
 }
 
-.bg-icons i:nth-child(1)  { top: 8%;  left: 5%;  font-size: 60px; }
-.bg-icons i:nth-child(2)  { top: 15%; left: 75%; font-size: 90px; }
-.bg-icons i:nth-child(3)  { top: 40%; left: 10%; font-size: 70px; }
-.bg-icons i:nth-child(4)  { top: 60%; left: 85%; font-size: 50px; }
-.bg-icons i:nth-child(5)  { top: 75%; left: 30%; font-size: 65px; }
-.bg-icons i:nth-child(6)  { top: 25%; left: 50%; font-size: 55px; }
-.bg-icons i:nth-child(7)  { top: 85%; left: 70%; font-size: 75px; }
-.bg-icons i:nth-child(8)  { top: 50%; left: 60%; font-size: 45px; }
-.bg-icons i:nth-child(9)  { top: 5%;  left: 40%; font-size: 85px; }
-.bg-icons i:nth-child(10) { top: 70%; left: 5%;  font-size: 50px; }
+.bg-icons i:nth-child(1) {
+  top: 8%;
+  left: 5%;
+  font-size: 60px;
+}
+
+.bg-icons i:nth-child(2) {
+  top: 15%;
+  left: 75%;
+  font-size: 90px;
+}
+
+.bg-icons i:nth-child(3) {
+  top: 40%;
+  left: 10%;
+  font-size: 70px;
+}
+
+.bg-icons i:nth-child(4) {
+  top: 60%;
+  left: 85%;
+  font-size: 50px;
+}
+
+.bg-icons i:nth-child(5) {
+  top: 75%;
+  left: 30%;
+  font-size: 65px;
+}
+
+.bg-icons i:nth-child(6) {
+  top: 25%;
+  left: 50%;
+  font-size: 55px;
+}
+
+.bg-icons i:nth-child(7) {
+  top: 85%;
+  left: 70%;
+  font-size: 75px;
+}
+
+.bg-icons i:nth-child(8) {
+  top: 50%;
+  left: 60%;
+  font-size: 45px;
+}
+
+.bg-icons i:nth-child(9) {
+  top: 5%;
+  left: 40%;
+  font-size: 85px;
+}
+
+.bg-icons i:nth-child(10) {
+  top: 70%;
+  left: 5%;
+  font-size: 50px;
+}
 
 #Base {
   position: relative;
