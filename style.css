@@ -305,9 +305,10 @@ header .search input {
     border-radius: 17px;
     /* مسافة من الشمال 36 بيكسل عشان الكلام ميركبش فوق أيقونة العدسة */
     padding: 8px 8px 8px 36px;
-    color: var(--text-muted);
+    color: #edf0f5;
     width: 100%;
     transition: 1s;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 /* لون الكلمة الوهمية (Placeholder) */
@@ -341,6 +342,23 @@ header .search input:focus {
     border: none;
     background-color: transparent;
     cursor: pointer;
+    position: relative;
+    /* ضروري عشان النقطة الزرقاء تتثبت جواه */
+}
+
+/* نقطة الإشعارات الزرقاء */
+.header-actions button::after {
+    content: "";
+    content: "";
+    position: absolute;
+    top: 7px;
+    right: -3px;
+    width: 11px;
+    height: 11px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    /* خط بنفس لون الخلفية بيديها شكل مقصوص واحترافي زي الصورة */
+    border: 2px solid var(--bg-content);
 }
 
 /* لون أيقونة الجرس */
@@ -363,8 +381,252 @@ header .search input:focus {
 }
 
 /* --- 5.2 Main Content ---
-   محتوى الصفحة الأساسي (حالة الطقس، الخريطة، إلخ)
+   محتوى الصفحة الأساسي
    ========================================= */
 .main {
     padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* مسافة بين الجزء اللي فوق (London) واللي تحت (الطقس والأيام) */
+}
+
+/* 
+   =========================================
+   فكرة الـ Grid هنا: 
+   تخيل إننا بنقسم الشاشة بالعرض لـ 12 عمود متساويين.
+   بنقول لكارت لندن (خد 8 عمدان لنفسك).
+   وبنقول لكارت الخريطة (خد الـ 4 عمدان الباقيين).
+   كده قسمنا المساحة بينهم بذكاء من غير ما نكتب بيكسلات ثابتة!
+   ========================================= 
+*/
+.top-section {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr); /* 12 عمود متساويين */
+    gap: 20px; /* المسافة بين الكارتين */
+}
+
+/* --- كارت لندن --- */
+.weather-card {
+    grid-column: span 8; /* هياخد 8 عمدان */
+    background-color: var(--bg-input); /* نفس لون خلفية البحث */
+    border-radius: 24px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.weather-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.weather-header h2 {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.weather-header p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+/* بادج كلمة NOW */
+.status {
+    background-color: var(--bg-hover);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* كلمة NOW فيها نقطة زرقاء أو نقدر نلون النص نفسه */
+.status {
+    color: var(--text-main);
+}
+
+.current-weather {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    gap: 20px;
+}
+
+.temperature {
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.weather-condition h3 {
+    font-size: 24px;
+    color: var(--accent); /* Cloudy باللون الأزرق */
+    font-weight: 600;
+}
+
+.weather-condition p {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-top: 4px;
+}
+
+.weather-icon {
+    margin-left: auto; /* بتزق الأيقونة لأقصى اليمين */
+    font-size: 80px;
+    color: var(--accent);
+}
+
+/* --- كارت الخريطة (الرادار) --- */
+.radar-card {
+    grid-column: span 4; /* هياخد 4 عمدان */
+    background-color: var(--bg-input);
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* المحتوى تحت */
+    border: 1px solid var(--accent); /* تحديد بسيط زي الصورة */
+}
+
+.radar-info {
+    margin-top: auto;
+}
+
+.radar-info span {
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+.radar-info p {
+    font-size: 14px;
+    color: var(--accent);
+    margin-top: 4px;
+}
+
+/* --- 6.2 Bottom Section (Grid) ---
+   الجزء السفلي برضه شغال بنفس نظام الـ 12 عمود 
+   ========================================= */
+.bottom-section {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+}
+
+/* --- قسم الحالات (Conditions) --- */
+.conditions {
+    grid-column: span 4; /* واخد 4 عمدان */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.conditions h2 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* هنا عملنا جريد صغير جوا القسم ده عشان نقسم الـ 4 كروت (2 جمب بعض) */
+.conditions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* عمودين قد بعض */
+    gap: 16px;
+}
+
+.condition-card {
+    background-color: var(--bg-input);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.condition-card span {
+    font-size: 10px;
+    color: var(--text-muted);
+    font-weight: bold;
+    letter-spacing: 1px; /* مسافة بين الحروف عشان شكلها يبقى أشيك */
+}
+
+.condition-card strong {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+/* --- قسم توقعات 7 أيام (7-Day Forecast) --- */
+.forecast {
+    grid-column: span 8; /* واخد 8 عمدان */
+    background-color: var(--bg-input);
+    border-radius: 24px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+}
+
+.forecast-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.forecast-header h2 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.forecast-header a {
+    font-size: 14px;
+    color: var(--accent);
+}
+
+.forecast-days {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.forecast-day {
+    flex: 1; /* عشان كل الأيام تاخد نفس المساحة بالظبط مهما كان عددهم */
+    background-color: var(--bg-hover);
+    border-radius: 16px;
+    padding: 24px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.forecast-day h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+/* يوم (اليوم - Today) مميز باللون الأزرق */
+.forecast-day.active h3 {
+    color: var(--accent);
+}
+
+.forecast-day .forecast-icon {
+    font-size: 28px;
+}
+
+.forecast-day p {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* درجة الحرارة الصغرى لونها باهت شوية */
+.forecast-day p span {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-left: 4px;
 }
