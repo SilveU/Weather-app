@@ -1,14 +1,25 @@
-# Weather-app
+# Atmosphere Weather App
 
-A responsive Weather App that provides real-time weather information for any city. Users can search for locations and view temperature, weather conditions, humidity, wind speed, and other useful details.
+A modern, high-fidelity weather dashboard built with HTML and raw CSS. 
 
-## ✨ Features Added So Far
-- **CSS Grid Layout:** A dynamic layout separated into a Sidebar (`256px`) and Main Content (`1fr`).
-- **Design System & Tokens:** Fully customized CSS variables (`:root`) for colors, backgrounds, and accents to maintain a consistent theme and make future dark/light mode implementation easier.
-- **Inline SVG Icons:** Interactive navigation icons that dynamically inherit text color and hover states (`fill: currentColor`) without external image requests.
-- **Dynamic Header:** A customized search bar that expands on focus/hover, complete with an inline search icon, and a header actions section featuring a notification bell and user profile placeholder.
-- **Clean Code Architecture:** CSS is strictly organized to reflect the HTML DOM structure, making it scalable and easy to maintain, complete with Arabic documentation for clarity.
+Live Demo: [https://silveu.github.io/Weather-app/](https://silveu.github.io/Weather-app/)
 
-## 🚀 Next Steps
-- Dashboard data integration and API setup.
-- Interactive weather charts and dynamic forecast elements.
+## Current UI Implementation
+This project currently focuses on providing a premium UI/UX experience. The interface is fully built and structured:
+- **Architecture**: Raw HTML5 & CSS3. No external frameworks or libraries.
+- **Layout System**: Advanced 12-column CSS Grid for precise dashboard widget placement.
+- **Assets**: 100% inline scalable SVGs mapped to CSS variables (`currentColor`) for dynamic styling.
+- **Theming**: A robust CSS custom properties (`:root`) design system ready for theme switching.
+- **Components**:
+  - Expandable search header.
+  - Primary location weather card.
+  - 4-grid conditions widget (Humidity, UV, Wind, Visibility).
+  - 7-day horizontal forecast view.
+
+## Roadmap (To-Do)
+The UI layout is complete, but the app needs logic and dynamic data:
+- [ ] **API Integration**: Connect to a live weather provider (e.g., OpenWeatherMap) to fetch real-time data.
+- [ ] **Search Logic**: Implement the location search functionality.
+- [ ] **Interactive Radar**: Replace the radar placeholder with a working Map API (e.g., Leaflet.js).
+- [ ] **Mobile Responsiveness**: Add media queries to stack the grid widgets properly on mobile screens.
+- [ ] **State Management**: JavaScript to handle dynamic DOM updates, day switching, and active states.
