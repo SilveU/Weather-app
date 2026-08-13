@@ -1,0 +1,220 @@
+/* === Tablet (≤ 1024px) === */
+@media (max-width: 1024px) {
+    html, body {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+    }
+
+    .page {
+        grid-template-columns: 1fr;
+        display: block; /* Remove grid to avoid layout issues */
+        padding-bottom: 70px; /* Space for the bottom nav */
+    }
+
+    /* Content Area */
+    .content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Fixed Bottom Navigation */
+    .sidebar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 10px;
+        background-color: var(--bg-sidebar);
+        border-right: none;
+        border-top: 1px solid var(--border-main);
+        z-index: 9999;
+        box-shadow: 0 -4px 10px rgba(0,0,0,0.5);
+    }
+
+    .sidebar .logo, .sidebar .upgrade {
+        display: none;
+    }
+
+    .sidebar .navigation {
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+        justify-content: space-around;
+        align-items: center;
+        gap: 0;
+    }
+
+    .sidebar .navigation a {
+        flex-direction: column;
+        width: auto;
+        padding: 8px 10px;
+        font-size: 11px;
+        gap: 4px;
+        justify-content: center;
+    }
+
+    .sidebar .navigation a:hover {
+        width: auto;
+        border-left: none;
+        background-color: transparent;
+        color: var(--accent);
+        border-radius: 0;
+    }
+
+    .sidebar .navigation a.active {
+        color: var(--accent);
+    }
+
+    /* Header */
+    .header {
+        height: 70px;
+        padding: 0 20px;
+        width: 100%;
+    }
+
+    .search {
+        flex: 1;
+    }
+
+    header .search input {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    header .search input:hover,
+    header .search input:focus {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    /* Main body */
+    .main {
+        padding: 20px;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .top-section, .bottom-section {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+    }
+
+    .weather-card, .radar-card, .conditions, .forecast {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .radar-card {
+        min-height: 200px;
+    }
+
+    .forecast {
+        overflow: hidden; /* prevents forecast-days from breaking the container */
+    }
+
+    .forecast-days {
+        overflow-x: auto;
+        display: flex;
+        gap: 12px;
+        padding-bottom: 10px;
+        width: 100%;
+    }
+
+    .forecast-day {
+        min-width: 90px;
+        flex-shrink: 0;
+    }
+}
+
+/* === Mobile (≤ 640px) === */
+@media (max-width: 640px) {
+    .header {
+        padding: 0 16px;
+    }
+
+    .header-actions {
+        gap: 12px;
+    }
+
+    header .search input {
+        font-size: 13px;
+        max-width: 200px;
+    }
+
+    header .search input:hover,
+    header .search input:focus {
+        max-width: 200px;
+    }
+
+    .main {
+        padding: 16px;
+    }
+
+    .weather-card {
+        padding: 20px;
+    }
+
+    .temperature {
+        font-size: 56px;
+    }
+
+    .current-weather {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .weather-icon {
+        font-size: 60px;
+    }
+
+    .conditions-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .sidebar .navigation a {
+        font-size: 10px;
+        padding: 4px;
+    }
+}
+
+/* === Small Mobile (≤ 400px) === */
+@media (max-width: 400px) {
+    header .search input {
+        max-width: 140px;
+        font-size: 12px;
+    }
+
+    header .search input:hover,
+    header .search input:focus {
+        max-width: 140px;
+    }
+
+    .temperature {
+        font-size: 48px;
+    }
+
+    .conditions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar .navigation a span {
+        display: none; /* Hide text, keep icons */
+    }
+
+    .sidebar .navigation a svg {
+        width: 24px;
+        height: 24px;
+    }
+}
